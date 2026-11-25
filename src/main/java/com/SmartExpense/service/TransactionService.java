@@ -15,13 +15,16 @@ public class TransactionService {
     private final TransactionRepository repository;
 
     public TransactionService(TransactionRepository repository){
-        this.repository = repository ;
+        this.repository = repository;
     }
 
     // Add a transaction
     public void addTransaction(Transaction transaction){
         if (transaction == null) {
             throw new IllegalArgumentException("Transaction cannot be null");
+        }
+        if(repository.findById(transaction.getId()) != null){
+            throw new IllegalArgumentException("Transaction ID Already Exists");
         }
         repository.save(transaction);
     }

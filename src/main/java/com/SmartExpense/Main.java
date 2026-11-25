@@ -2,11 +2,12 @@ package com.SmartExpense;
 
 import com.SmartExpense.model.Transaction;
 import com.SmartExpense.model.TransactionType;
+import com.SmartExpense.repository.InMemoryTransactionRepository;
 import com.SmartExpense.repository.TransactionRepository;
 import com.SmartExpense.service.TransactionService;
 
 import java.math.BigDecimal;
-import java.sql.SQLOutput;
+
 import java.time.LocalDate;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class Main {
     static void main(String[] args) {
 
         // Create the Repository
-        TransactionRepository repository = new TransactionRepository();
+        TransactionRepository repository = new InMemoryTransactionRepository();
 
         // Create the Service
         TransactionService service = new TransactionService(repository);
